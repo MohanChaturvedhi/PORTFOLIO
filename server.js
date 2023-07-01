@@ -4,6 +4,7 @@ const app=express();
 const articleRouter=require("./routes/articles")
 const Article=require('./models/article')
 const methodOverride=require('method-override');
+const dotenv=require('dotenv').config();
 
 const connectDB=async ()=>{
     try{
@@ -19,6 +20,7 @@ const connectDB=async ()=>{
     }
 }
 connectDB();
+const port=process.env.PORT;
 app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('_method'))
 
@@ -32,6 +34,6 @@ app.get("/",async (req,res)=>{
 
 app.use('/articles',articleRouter); 
 
-app.listen(3000,()=>{
-    console.log("listening to port 3000")
+app.listen(port,()=>{
+    console.log(`listening to port ${port}`)
 });
