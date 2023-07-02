@@ -4,7 +4,8 @@ const app=express();
 const articleRouter=require("./routes/articles")
 const Article=require('./models/article')
 const methodOverride=require('method-override');
-const dotenv=require('dotenv').config();
+require('dotenv').config();
+
 
 const connectDB=async ()=>{
     try{
